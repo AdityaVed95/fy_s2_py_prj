@@ -128,9 +128,13 @@ class Account:
             flag = 0
             for item in python_object_list_all_usernames:
                 if username_2 == item:
-                    print("Successfully validated the existence of the account to which money is to be transferred")
-                    flag = 1
-                    break
+                    if username_2 == self.username:
+                        print("Sorry You cannot transfer money to yourself")
+                        print("Please input another username")
+                    else:
+                        print("Successfully validated the existence of the account to which money is to be transferred")
+                        flag = 1
+                        break
 
             if flag == 1:
                 break
