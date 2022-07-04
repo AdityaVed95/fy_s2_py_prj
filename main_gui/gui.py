@@ -39,6 +39,18 @@ class Account:
                                 messagebox.showinfo(title='Successful',
                                                     message=f'{amount_entry.get()} transfered to {name_2_entry.get()} from {self.username} successfully')
                                 self.current_bal = str(int(self.current_bal) - int(amount_entry.get()))
+
+                                f7 = open(self.username, "rb")
+                                account_object_username1 = pickle.load(f7)
+                                f7.close()
+
+                                account_object_username1.current_bal = str(
+                                    int(account_object_username1.current_bal) - int(amount_entry.get()))
+
+                                f8 = open(self.username, "wb")
+                                pickle.dump(account_object_username1, f8)
+                                f8.close()
+
                                 f4 = open(name_2_entry.get(), "rb")
                                 account_object_username2 = pickle.load(f4)
                                 f4.close()
